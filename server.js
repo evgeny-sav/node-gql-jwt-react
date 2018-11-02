@@ -67,7 +67,6 @@ app.use(
   })
 );
 
-// eslint-disable-next-line
 app.use((err, req, res, next) => {
   res.status(err.statusCode || 500).send('Error');
 });
