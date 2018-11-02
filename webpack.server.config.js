@@ -10,7 +10,7 @@ module.exports = {
   },
   output: {
     path: path.resolve('dist'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
   },
   resolve: {
     extensions: ['.js'],
@@ -25,5 +25,5 @@ module.exports = {
     ],
   },
   target: 'node',
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
 };

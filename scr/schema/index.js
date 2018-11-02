@@ -1,4 +1,9 @@
-import { GraphQLSchema, GraphQLObjectType, GraphQLList, GraphQLID } from 'graphql';
+import {
+  GraphQLSchema,
+  GraphQLObjectType,
+  GraphQLList,
+  GraphQLID,
+} from 'graphql';
 import User from './user';
 
 const rootQuery = new GraphQLObjectType({
@@ -6,15 +11,17 @@ const rootQuery = new GraphQLObjectType({
   fields: {
     users: {
       type: new GraphQLList(User),
+      // eslint-disable-next-line
       resolve(parentValue, args) {
         return []; //todo: fetch from DB
-      }
+      },
     },
     user: {
       type: User,
       args: {
-        id: { type: GraphQLID }
+        id: { type: GraphQLID },
       },
+      // eslint-disable-next-line
       resolve(parentValue, args) {
         //todo: fetch from DB
         return {
@@ -23,15 +30,15 @@ const rootQuery = new GraphQLObjectType({
           username: 'jd',
           email: 'jd@gmail.com',
           phone: '+19172008384',
-          website: 'johnd.com'
+          website: 'johnd.com',
         };
-      }
-    }
-  }
+      },
+    },
+  },
 });
 
 const schema = new GraphQLSchema({
-  query: rootQuery
+  query: rootQuery,
 });
 
 export default schema;

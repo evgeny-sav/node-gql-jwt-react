@@ -30,7 +30,5 @@ module.exports = merge(common, {
       // },
     ],
   },
-  plugins: [
-    new ExtractTextPlugin('styles.css'),
-  ],
+  plugins: [new ExtractTextPlugin('styles.css')],
 });
