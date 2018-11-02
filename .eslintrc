@@ -16,6 +16,7 @@
     "expect": true
   },
   "rules": {
-    "semi": 2
-  }
+    "prettier/prettier": "error"
+  },
+  "plugins": ["prettier"]
 }
