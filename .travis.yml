@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "8"
+before_install:
+  - npm -v
+before_script:
+  - npm install
+script: npm test && npm run precommit
