@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: ['./index.jsx'], // 'babel-polyfill',
+    app: ['./app/index.jsx'], // 'babel-polyfill',
   },
   output: {
     path: path.resolve('dist'),
@@ -36,7 +36,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'app/index.html',
       filename: 'index.html',
       inject: 'body',
     }),
