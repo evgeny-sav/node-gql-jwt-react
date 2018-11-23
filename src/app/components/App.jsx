@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import UserService from '../services/userService';
 
 class App extends Component {
   constructor(props) {
@@ -9,20 +9,7 @@ class App extends Component {
     };
   }
   componentDidMount() {
-    axios
-      .post('http://localhost:3000/graphql', {
-        query: `{
-          user {
-            id
-            name
-            username
-            email
-            phone
-            website
-          }
-        }`,
-      })
-      .then(res => this.setState({ ...res.data.data }));
+    UserService.getUsers().then(res => this.setState({ ...res.data.data }));
   }
 
   render() {
