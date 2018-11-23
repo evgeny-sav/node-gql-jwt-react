@@ -27,8 +27,8 @@ const rootQuery = new GraphQLObjectType({
         return {
           id: '1',
           name: 'John Doe',
-          username: 'jd',
-          email: 'jd@gmail.com',
+          username: 'johndoe',
+          email: 'johnd@gmail.com',
           phone: '+19172008384',
           website: 'johnd.com',
         };

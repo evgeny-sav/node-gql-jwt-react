@@ -7,7 +7,7 @@ import { format, createLogger, transports } from 'winston';
 import morgan from 'morgan';
 import graphqlHTTP from 'express-graphql';
 import config from './configs/config';
-import schema from './scr/schema';
+import schema from './src/schema';
 const { combine, timestamp, label, printf } = format;
 
 /*
