@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import UserService from '../services/userService';
+import classNames from 'classnames';
+import UserService from '../../services/userService';
+import styles from './App.scss';
+
+const cx = classNames.bind(styles);
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +19,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Hello World</h1>
+        <h1 className={cx(styles.h1, styles.red)}>Hello World!!!</h1>
         <p>{this.state.user ? this.state.user.username : null}</p>
       </div>
     );
