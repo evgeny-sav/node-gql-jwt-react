@@ -53,10 +53,6 @@ app.use(cors());
 app.use(helmet());
 app.use(morgan(':method :url :status :response-time ms'));
 
-// Just example how to use routers
-// import { default as usersRouter } from './scr/routers/users';
-// app.use('/users', usersRouter);
-
 app.use('/', express.static('dist'));
 
 app.use(

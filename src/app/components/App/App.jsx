@@ -23,12 +23,44 @@ class App extends Component {
       <div className={cx(globalStyles.container)}>
         <div className={cx(globalStyles.row)}>
           <div className="col-6">
-            <h1>
-              Hello,
-              <span className={cx(globalStyles['font-weight-bold'])}>
-                {this.props.user ? ` ${this.props.user.name}` : ' World!'}
-              </span>
-            </h1>
+            {this.props.user ? (
+              <div>
+                <p>
+                  <h1>
+                    Hello,{' '}
+                    <span className={cx(globalStyles['font-weight-bold'])}>{`${
+                      this.props.user.name
+                    }`}</span>
+                  </h1>
+                </p>
+                <p>
+                  <span className={cx(globalStyles['font-weight-bold'])}>
+                    Email:
+                  </span>
+                  {` ${this.props.user.email}`}
+                </p>
+                <p>
+                  <span className={cx(globalStyles['font-weight-bold'])}>
+                    Username:
+                  </span>
+                  {` ${this.props.user.username}`}
+                </p>
+                <p>
+                  <span className={cx(globalStyles['font-weight-bold'])}>
+                    Phone:
+                  </span>
+                  {` ${this.props.user.phone}`}
+                </p>
+                <p>
+                  <span className={cx(globalStyles['font-weight-bold'])}>
+                    Website:
+                  </span>
+                  {` ${this.props.user.website}`}
+                </p>
+              </div>
+            ) : (
+              ' User!'
+            )}
             <button
               className={cx(
                 globalStyles.btn,
