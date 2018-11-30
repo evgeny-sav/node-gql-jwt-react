@@ -25,14 +25,12 @@ class App extends Component {
           <div className="col-6">
             {this.props.user ? (
               <div>
-                <p>
-                  <h1>
-                    Hello,{' '}
-                    <span className={cx(globalStyles['font-weight-bold'])}>{`${
-                      this.props.user.name
-                    }`}</span>
-                  </h1>
-                </p>
+                <h1>
+                  Hello,{' '}
+                  <span className={cx(globalStyles['font-weight-bold'])}>{`${
+                    this.props.user.name
+                  }`}</span>
+                </h1>
                 <p>
                   <span className={cx(globalStyles['font-weight-bold'])}>
                     Email:
