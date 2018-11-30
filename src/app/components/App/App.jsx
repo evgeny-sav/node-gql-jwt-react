@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
-import UserService from '../../services/userService';
+import fetchUser from '../../actions/singleItem';
+
 import globalStyles from 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './App.module.scss';
 
@@ -9,12 +11,11 @@ const cx = classNames.bind(styles);
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: null,
-    };
   }
-  componentDidMount() {
-    UserService.getUsers().then(res => this.setState({ ...res.data.data }));
+
+  async componentDidMount() {
+    const { dispatch } = this.props;
+    dispatch(fetchUser());
   }
 
   render() {
@@ -25,7 +26,7 @@ class App extends Component {
             <h1>
               Hello,
               <span className={cx(globalStyles['font-weight-bold'])}>
-                {this.state.user ? ` ${this.state.user.username}` : ' World!'}
+                {this.props.user ? ` ${this.props.user.name}` : ' World!'}
               </span>
             </h1>
             <button
@@ -43,4 +44,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ user }) => ({
+  user,
+});
+
+export default connect(mapStateToProps)(App);

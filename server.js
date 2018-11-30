@@ -17,10 +17,8 @@ const { combine, timestamp, label, printf } = format;
  * TODO: JWT and Auth with GQL
  * MAYBE TODO: JWT and Auth with Passport + OAuth with Facebook/Github/Google
  * TODO: implement roles (admin, customer, superadmin, guest)
- * TODO: create react app, redux
- * TODO: git-hooks (lint, test)
+ * TODO: redux
  * TODO: Tests (unit, integration, jest, mocha, chai)
- * TODO: CI/CD with Travis
 **/
 
 const logger = createLogger({
