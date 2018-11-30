@@ -9,7 +9,7 @@ import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
 
 import App from './components/App/App';
-import singleUserReducer from './reducers/singleItem';
+import singleUserReducer from './reducers/singleUser';
 
 const composeEnhancers = composeWithDevTools({});
 const logger = createLogger();

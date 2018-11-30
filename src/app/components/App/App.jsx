@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import fetchUser from '../../actions/singleItem';
+import fetchUser from '../../actions/singleUser';
 
 import globalStyles from 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './App.module.scss';
