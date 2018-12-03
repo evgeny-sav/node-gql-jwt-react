@@ -15,10 +15,10 @@ export const fetchUserError = e => ({
   payload: e,
 });
 
-export const fetchUser = () => async dispatch => {
+export const fetchUser = id => async dispatch => {
   dispatch(fetchUserStarted());
   try {
-    const payload = await UserService.getUsers();
+    const payload = await UserService.getUserById(id);
     dispatch(fetchUserCompleted(payload.data));
   } catch (e) {
     dispatch(fetchUserError(e));

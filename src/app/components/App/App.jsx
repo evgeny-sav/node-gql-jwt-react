@@ -15,7 +15,8 @@ class App extends Component {
 
   async componentDidMount() {
     const { dispatch } = this.props;
-    dispatch(fetchUser());
+    const id = '5c055939afe75c1b808d2057';
+    dispatch(fetchUser(id));
   }
 
   render() {
