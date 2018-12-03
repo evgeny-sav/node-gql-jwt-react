@@ -4,41 +4,47 @@ import {
   GraphQLList,
   GraphQLID,
 } from 'graphql';
-import User from './user';
+import mongoose from 'mongoose';
+import UserGQLSchema from './user';
+import userMutations from './mutations/user';
+import UserDBModel from '../db/models/user';
 
 const rootQuery = new GraphQLObjectType({
   name: 'rootQuery',
   fields: {
     users: {
-      type: new GraphQLList(User),
-      // eslint-disable-next-line
-      resolve(parentValue, args) {
-        return []; //todo: fetch from DB
+      type: new GraphQLList(UserGQLSchema),
+      async resolve() {
+        try {
+          return await UserDBModel.find({}); // todo: improve (don't return all users fields but only requested ones)
+        } catch (e) {
+          throw new Error(e.message);
+        }
       },
     },
     user: {
-      type: User,
+      type: UserGQLSchema,
       args: {
         id: { type: GraphQLID },
       },
-      // eslint-disable-next-line
-      resolve(parentValue, args) {
-        //todo: fetch from DB
-        return {
-          id: '1',
-          name: 'John Doe',
-          username: 'johndoe',
-          email: 'johnd@gmail.com',
-          phone: '+19172008384',
-          website: 'johnd.com',
-        };
+      async resolve(parentValue, args) {
+        if (!mongoose.Types.ObjectId.isValid(args.id)) {
+          throw new Error('Not valid user ID');
+        }
+        try {
+          return await UserDBModel.findById(args.id);
+        } catch (e) {
+          throw new Error(e.message);
+        }
       },
     },
   },
 });
 
+//todo: signup mutation
 const schema = new GraphQLSchema({
   query: rootQuery,
+  mutation: userMutations,
 });
 
 export default schema;
