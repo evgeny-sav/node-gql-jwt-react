@@ -1,6 +1,6 @@
 import { GraphQLObjectType, GraphQLID, GraphQLString } from 'graphql';
 
-const UserGQLSchema = new GraphQLObjectType({
+const UserType = new GraphQLObjectType({
   name: 'User',
   fields: () => ({
     id: { type: GraphQLID },
@@ -14,4 +14,4 @@ const UserGQLSchema = new GraphQLObjectType({
   }),
 });
 
-export default UserGQLSchema;
+export default UserType;

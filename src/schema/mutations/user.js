@@ -5,14 +5,14 @@ import {
   GraphQLNonNull,
 } from 'graphql';
 import mongoose from 'mongoose';
-import UserGQLSchema from '../user';
-import UserDBModel from '../../db/models/user';
+import UserType from '../user';
+import UserModel from '../../db/models/user';
 
-const userMutation = new GraphQLObjectType({
+const UserMutation = new GraphQLObjectType({
   name: 'UserMutation',
   fields: {
     addUser: {
-      type: UserGQLSchema,
+      type: UserType,
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         username: { type: GraphQLString },
@@ -22,7 +22,7 @@ const userMutation = new GraphQLObjectType({
       },
       async resolve(parentVal, args) {
         const id = new mongoose.Types.ObjectId();
-        const user = new UserDBModel({
+        const user = new UserModel({
           _id: id,
           ...args,
         });
@@ -34,20 +34,20 @@ const userMutation = new GraphQLObjectType({
       },
     },
     deleteUser: {
-      type: UserGQLSchema,
+      type: UserType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
       async resolve(parentValue, args) {
         try {
-          return await UserDBModel.deleteOne({ _id: args.id });
+          return await UserModel.deleteOne({ _id: args.id });
         } catch (e) {
           throw new Error(e.message);
         }
       },
     },
     editUser: {
-      type: UserGQLSchema,
+      type: UserType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
         name: { type: GraphQLString },
@@ -59,7 +59,7 @@ const userMutation = new GraphQLObjectType({
       },
       async resolve(parentValue, args) {
         try {
-          return await UserDBModel.updateOne(
+          return await UserModel.updateOne(
             {
               _id: args.id,
             },
@@ -77,4 +77,4 @@ const userMutation = new GraphQLObjectType({
   },
 });
 
-export default userMutation;
+export default UserMutation;

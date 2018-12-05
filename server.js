@@ -9,7 +9,7 @@ import graphqlHTTP from 'express-graphql';
 import db from './src/db';
 import logger from './src/utils/logger';
 import config from './configs/config';
-import schema from './src/schema';
+import GQLSchema from './src/schema';
 
 /* TODO: auth, projection, pagination, sanitization, validation
  * TODO: JWT and Auth with GQL
@@ -33,7 +33,7 @@ app.use('/', express.static('dist'));
 app.use(
   '/graphql',
   graphqlHTTP({
-    schema,
+    schema: GQLSchema,
     graphiql: true,
   })
 );
