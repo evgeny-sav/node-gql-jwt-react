@@ -1,7 +1,12 @@
 import constants from '../constants';
 
 const initialState = {
+  email: '',
   name: '',
+  username: '',
+  phone: '',
+  website: '',
+  messages: [],
 };
 
 const actions = {

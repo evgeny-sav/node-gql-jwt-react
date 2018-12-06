@@ -13,6 +13,11 @@ class UserService {
           website
           createdAt
           updatedAt
+          messages {
+            id
+            userId
+            body
+          }
         }
       }`,
       variables: {

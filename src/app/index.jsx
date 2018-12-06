@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { composeWithDevTools } from 'redux-devtools-extension/logOnlyInProduction';
 import { applyMiddleware, createStore, combineReducers } from 'redux';
@@ -22,7 +22,10 @@ const store = createStore(reducers, composeEnhancers(middleware));
 const renderRoutes = () => (
   <Provider store={store}>
     <Router>
-      <App />
+      <Switch>
+        <Route path="/" exact component={App} />
+        <Route path="/*" exact render={() => <h1>404 Not Found</h1>} />
+      </Switch>
     </Router>
   </Provider>
 );

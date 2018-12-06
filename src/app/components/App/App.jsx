@@ -21,53 +21,81 @@ class App extends Component {
 
   render() {
     return (
-      <div className={cx(globalStyles.container)}>
+      <div className={cx(globalStyles.container, globalStyles['mt-3'])}>
         <div className={cx(globalStyles.row)}>
           <div className="col-6">
             {this.props.user ? (
               <div>
-                <h1>
-                  Hello,{' '}
-                  <span className={cx(globalStyles['font-weight-bold'])}>{`${
-                    this.props.user.name
-                  }`}</span>
-                </h1>
-                <p>
-                  <span className={cx(globalStyles['font-weight-bold'])}>
-                    Email:
-                  </span>
-                  {` ${this.props.user.email}`}
-                </p>
-                <p>
-                  <span className={cx(globalStyles['font-weight-bold'])}>
-                    Username:
-                  </span>
-                  {` ${this.props.user.username}`}
-                </p>
-                <p>
-                  <span className={cx(globalStyles['font-weight-bold'])}>
-                    Phone:
-                  </span>
-                  {` ${this.props.user.phone}`}
-                </p>
-                <p>
-                  <span className={cx(globalStyles['font-weight-bold'])}>
-                    Website:
-                  </span>
-                  {` ${this.props.user.website}`}
-                </p>
+                <div className={globalStyles.card} style={{ width: '18rem' }}>
+                  <div className={globalStyles['card-body']}>
+                    <h4 className={globalStyles['card-title']}>
+                      {this.props.user.name}{' '}
+                      <small
+                        className={cx(
+                          globalStyles.small,
+                          globalStyles['text-muted']
+                        )}
+                      >
+                        aka. {this.props.user.username}
+                      </small>
+                    </h4>
+                    <h6
+                      className={cx(
+                        globalStyles['card-subtitle'],
+                        globalStyles['mb-2'],
+                        globalStyles['text-muted']
+                      )}
+                    >
+                      Web: {this.props.user.website}
+                    </h6>
+                    <h6
+                      className={cx(
+                        globalStyles['card-subtitle'],
+                        globalStyles['mb-2'],
+                        globalStyles['text-muted']
+                      )}
+                    >
+                      Email: {this.props.user.email}
+                    </h6>
+                    <h6
+                      className={cx(
+                        globalStyles['card-subtitle'],
+                        globalStyles['mb-2'],
+                        globalStyles['text-muted']
+                      )}
+                    >
+                      Tel.: {this.props.user.phone}
+                    </h6>
+                    <hr />
+                    <div className={globalStyles['card-text']}>
+                      {this.props.user.messages.map(msg => (
+                        <p key={msg.id}>
+                          {msg.body} by userId{' '}
+                          <span
+                            className={cx(
+                              globalStyles['font-italic'],
+                              globalStyles['text-info']
+                            )}
+                          >
+                            {msg.userId}
+                          </span>
+                        </p>
+                      ))}
+                    </div>
+                    <button
+                      className={cx(
+                        globalStyles.btn,
+                        globalStyles['btn-outline-primary']
+                      )}
+                    >
+                      Button
+                    </button>
+                  </div>
+                </div>
               </div>
             ) : (
               ' User!'
             )}
-            <button
-              className={cx(
-                globalStyles.btn,
-                globalStyles['btn-outline-primary']
-              )}
-            >
-              Press me
-            </button>
           </div>
         </div>
       </div>
