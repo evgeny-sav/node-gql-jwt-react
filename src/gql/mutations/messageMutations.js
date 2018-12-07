@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-import MessageModel from '../../db/models/message';
 
 const MessageMutation = {
-  addMessage: async (_, { userId, body }) => {
+  addMessage: async (root, { userId, body }, { db: { MessageModel } }) => {
     const id = new mongoose.Types.ObjectId();
     const message = new MessageModel({
       _id: id,

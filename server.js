@@ -33,6 +33,9 @@ app.use('/', express.static('dist'));
 app.use(
   '/graphql',
   graphqlHTTP({
+    context: {
+      db,
+    },
     schema: GQLSchema,
     graphiql: true,
   })

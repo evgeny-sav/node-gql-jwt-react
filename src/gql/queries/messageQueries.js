@@ -1,16 +1,19 @@
 import mongoose from 'mongoose';
-import MessageModel from '../../db/models/message';
+// import MessageModel from '../../db/models/message';
 import getProjection from '../utils/projection';
 
 const messageQueries = {
-  messages: async () => {
+  messages: async (root, args, { db: { MessageModel } }, fieldASTs) => {
     try {
-      return await MessageModel.find({}); // todo: improve (don't return all users fields but only requested ones)
+      const projection = getProjection(fieldASTs);
+      return await MessageModel.find({})
+        .select(projection)
+        .exec();
     } catch (e) {
       throw new Error(e.message);
     }
   },
-  message: async (_, { id }, ctx, fieldASTs) => {
+  message: async (root, { id }, { db: { MessageModel } }, fieldASTs) => {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       throw new Error('Not valid user ID');
     }
