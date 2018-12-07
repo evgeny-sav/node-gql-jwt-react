@@ -9,7 +9,7 @@ import graphqlHTTP from 'express-graphql';
 import db from './src/db';
 import logger from './src/utils/logger';
 import config from './configs/config';
-import GQLSchema from './src/schema';
+import GQLSchema from './src/gql';
 
 /* TODO: auth, projection, pagination, sanitization, validation
  * TODO: JWT and Auth with GQL

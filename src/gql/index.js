@@ -1,6 +1,6 @@
 import { makeExecutableSchema } from 'graphql-tools';
 
-import typeDefs from './typeDefinitions';
+import typeDefs from './types';
 import resolvers from './resolvers';
 
 //todo: signup mutation
