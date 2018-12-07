@@ -1,9 +1,8 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const config = require('./configs/config');
 
 module.exports = {
-  mode: config.ENV,
+  mode: process.env.NODE_ENV,
   context: path.resolve(__dirname),
   entry: {
     server: ['./server.js'],

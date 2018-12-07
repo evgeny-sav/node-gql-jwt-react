@@ -1,12 +1,13 @@
 import mongoose from 'mongoose';
 import logger from '../utils/logger';
-import config from '../../configs/config';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import UserModel from './models/user';
 import MessageModel from './models/message';
 
 mongoose.connect(
-  config.MONGO_URI,
+  process.env.MONGO_URI,
   { useNewUrlParser: true }
 );
 

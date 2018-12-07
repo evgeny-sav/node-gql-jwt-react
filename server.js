@@ -4,14 +4,15 @@ import helmet from 'helmet';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import graphqlHTTP from 'express-graphql';
+import dotenv from 'dotenv';
+dotenv.config();
 
-// eslint-disable-next-line
+import config from './configs/config';
 import db from './src/db';
 import logger from './src/utils/logger';
-import config from './configs/config';
 import GQLSchema from './src/gql';
 
-/* TODO: auth, projection, pagination, sanitization, validation
+/* TODO: auth, pagination, sanitization, validation
  * TODO: JWT and Auth with GQL
  * MAYBE TODO: JWT and Auth with Passport + OAuth with Facebook/Github/Google
  * TODO: implement roles (admin, customer, superadmin, guest)

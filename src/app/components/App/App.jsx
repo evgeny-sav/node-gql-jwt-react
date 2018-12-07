@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import fetchUser from '../../actions/singleUser';
@@ -21,81 +22,80 @@ class App extends Component {
 
   render() {
     return (
-      <div className={cx(globalStyles.container, globalStyles['mt-3'])}>
-        <div className={cx(globalStyles.row)}>
-          <div className="col-6">
-            {this.props.user ? (
-              <div>
-                <div className={globalStyles.card} style={{ width: '18rem' }}>
-                  <div className={globalStyles['card-body']}>
-                    <h4 className={globalStyles['card-title']}>
-                      {this.props.user.name}{' '}
-                      <small
-                        className={cx(
-                          globalStyles.small,
-                          globalStyles['text-muted']
-                        )}
-                      >
-                        aka. {this.props.user.username}
-                      </small>
-                    </h4>
-                    <h6
-                      className={cx(
-                        globalStyles['card-subtitle'],
-                        globalStyles['mb-2'],
-                        globalStyles['text-muted']
-                      )}
-                    >
-                      Web: {this.props.user.website}
-                    </h6>
-                    <h6
-                      className={cx(
-                        globalStyles['card-subtitle'],
-                        globalStyles['mb-2'],
-                        globalStyles['text-muted']
-                      )}
-                    >
-                      Email: {this.props.user.email}
-                    </h6>
-                    <h6
-                      className={cx(
-                        globalStyles['card-subtitle'],
-                        globalStyles['mb-2'],
-                        globalStyles['text-muted']
-                      )}
-                    >
-                      Tel.: {this.props.user.phone}
-                    </h6>
-                    <hr />
-                    <div className={globalStyles['card-text']}>
-                      {this.props.user.messages.map(msg => (
-                        <p key={msg.id}>
-                          {msg.body} by userId{' '}
-                          <span
-                            className={cx(
-                              globalStyles['font-italic'],
-                              globalStyles['text-info']
-                            )}
-                          >
-                            {msg.userId}
-                          </span>
-                        </p>
-                      ))}
-                    </div>
-                    <button
-                      className={cx(
-                        globalStyles.btn,
-                        globalStyles['btn-outline-primary']
-                      )}
-                    >
-                      Button
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              ' User!'
+      <div>
+        <nav
+          className={cx(
+            globalStyles['navbar'],
+            globalStyles['navbar-expand-lg'],
+            globalStyles['navbar-light'],
+            globalStyles['bg-light']
+          )}
+        >
+          <Link className={globalStyles['navbar-brand']} to="/">
+            Website
+          </Link>
+          <button
+            className={globalStyles['navbar-toggler']}
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className={globalStyles['navbar-toggler-icon']} />
+          </button>
+          <div
+            className={cx(
+              globalStyles['collapse'],
+              globalStyles['navbar-collapse']
             )}
+            id="navbarNavAltMarkup"
+          >
+            <div className={globalStyles['navbar-nav']}>
+              <Link
+                className={cx(
+                  globalStyles['nav-item'],
+                  globalStyles['nav-link'],
+                  globalStyles.active
+                )}
+                to="/"
+              >
+                Home <span className={globalStyles['sr-only']}>(current)</span>
+              </Link>
+              <Link
+                className={cx(
+                  globalStyles['nav-item'],
+                  globalStyles['nav-link']
+                )}
+                to="/"
+              >
+                Features
+              </Link>
+              <Link
+                className={cx(
+                  globalStyles['nav-item'],
+                  globalStyles['nav-link']
+                )}
+                to="/"
+              >
+                Pricing
+              </Link>
+              <Link
+                className={cx(
+                  globalStyles['nav-item'],
+                  globalStyles['nav-link']
+                )}
+                to="/"
+              >
+                Disabled
+              </Link>
+            </div>
+          </div>
+        </nav>
+        <div className={cx(globalStyles.container, globalStyles['mt-3'])}>
+          <div className={cx(globalStyles.row)}>
+            <div className={globalStyles['col-12']} />
           </div>
         </div>
       </div>
