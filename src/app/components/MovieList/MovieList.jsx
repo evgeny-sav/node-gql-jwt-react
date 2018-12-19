@@ -43,7 +43,6 @@ class MovieList extends Component {
             </button>
           </div>
         </div>
-
         <h1 className={globalStyles.h1}>Movies</h1>
         <hr />
         <div className={globalStyles.row}>
