@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const config = require('./configs/config');
 
 module.exports = merge(common, {
-  mode: process.env.NODE_ENV,
+  mode: process.env.NODE_ENV || 'development',
   devtool: 'inline-source-map',
   devServer: {
     port: config.APP_PORT,

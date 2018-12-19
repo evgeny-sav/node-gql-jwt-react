@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 import fetchUser from '../../actions/singleUser';
 
+import MovieList from '../MovieList/MovieList';
+
 import globalStyles from 'bootstrap/dist/css/bootstrap.min.css';
 import styles from './App.module.scss';
 
@@ -17,7 +19,7 @@ class App extends Component {
   async componentDidMount() {
     const { dispatch } = this.props;
     const id = '5c055939afe75c1b808d2057';
-    dispatch(fetchUser(id));
+    // dispatch(fetchUser(id));
   }
 
   render() {
@@ -95,7 +97,9 @@ class App extends Component {
         </nav>
         <div className={cx(globalStyles.container, globalStyles['mt-3'])}>
           <div className={cx(globalStyles.row)}>
-            <div className={globalStyles['col-12']} />
+            <div className={globalStyles['col-12']}>
+              <MovieList />
+            </div>
           </div>
         </div>
       </div>

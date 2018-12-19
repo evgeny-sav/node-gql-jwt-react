@@ -16,6 +16,23 @@ class MovieService {
       },
     });
   }
+
+  static searchMovies(query) {
+    return axios.post(`${config.GQL_URL}`, {
+      query: `query getMovies($query: String!) {
+        movies(query: $query) {
+          id
+          title
+          overview
+          release_date
+          poster_path
+        }
+      }`,
+      variables: {
+        query: query,
+      },
+    });
+  }
 }
 
 export default MovieService;

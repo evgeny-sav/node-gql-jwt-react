@@ -10,14 +10,16 @@ import { Provider } from 'react-redux';
 
 import App from './components/App/App';
 import singleUserReducer from './reducers/singleUser';
+import movieReducers from './reducers/movies';
 
 const composeEnhancers = composeWithDevTools({});
 const logger = createLogger();
 
 const reducers = combineReducers({
   user: singleUserReducer,
+  movies: movieReducers,
 });
-const middleware = applyMiddleware(logger, thunk);
+const middleware = applyMiddleware(/*logger, */ thunk);
 const store = createStore(reducers, composeEnhancers(middleware));
 const renderRoutes = () => (
   <Provider store={store}>
