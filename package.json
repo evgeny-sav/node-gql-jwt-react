@@ -69,6 +69,8 @@
     "winston": "^3.1.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "babel-eslint": "^10.0.1",
     "css-loader": "^1.0.1",
     "eslint": "^5.8.0",
     "eslint-config-prettier": "^3.1.0",
