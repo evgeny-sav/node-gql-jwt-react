@@ -17,8 +17,7 @@ const actions = {
   [constants.FETCH_MOVIES_ERROR]: (state, action) => {
     throw Error(action.payload.message);
   },
-  [constants.FETCH_MOVIES_COMPLETED]: (state, action) =>
-    action.payload.data.movies,
+  [constants.FETCH_MOVIES_COMPLETED]: (state, action) => action.payload,
   // [constants.SORT]: (state, action) => (sortActions[action.payload] ? sortActions[action.payload](state) : state),
 };
 

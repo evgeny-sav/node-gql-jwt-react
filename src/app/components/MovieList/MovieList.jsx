@@ -42,6 +42,7 @@ class MovieList extends Component {
                   >
                     <img
                       className={globalStyles['card-img-top']}
+                      data-imgpath={`${movie.poster_path}`}
                       src={
                         movie.poster_path
                           ? `https://image.tmdb.org/t/p/w300${

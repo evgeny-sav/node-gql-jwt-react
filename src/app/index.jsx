@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import App from './components/App/App';
 import singleUserReducer from './reducers/singleUser';
 import movieReducers from './reducers/movies';
+import { searchFilterReducers } from './reducers/search';
 
 const composeEnhancers = composeWithDevTools({});
 const logger = createLogger();
@@ -18,6 +19,7 @@ const logger = createLogger();
 const reducers = combineReducers({
   user: singleUserReducer,
   movies: movieReducers,
+  searchFilter: searchFilterReducers,
 });
 const middleware = applyMiddleware(/*logger, */ thunk);
 const store = createStore(reducers, composeEnhancers(middleware));

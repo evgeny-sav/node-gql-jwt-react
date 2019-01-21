@@ -2,6 +2,9 @@ import globalStyles from 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
+
+import SearchBy from '../SearchBy/SearchBy';
+
 import styles from './Searchbar.module.scss';
 
 import fetchMovies from '../../actions/movies';
@@ -24,42 +27,45 @@ class Searchbar extends Component {
 
   submitSearch = e => {
     e.preventDefault();
-    const { dispatch } = this.props;
-    dispatch(fetchMovies(this.state.searchInput));
+    const { dispatch, searchFilter } = this.props;
+    dispatch(fetchMovies(this.state.searchInput, searchFilter));
   };
 
   render() {
     return (
-      <form onSubmit={this.submitSearch}>
-        <div className={cx(globalStyles['form-group'])}>
-          <div className={globalStyles['input-group-append']}>
-            <div
-              className={cx(globalStyles['input-group'], globalStyles['mb-5'])}
-            >
-              <input
-                type="text"
-                placeholder="Search movie ..."
-                className={globalStyles['form-control']}
-                onChange={this.handleInputChange}
-              />
-              <button
-                className={cx(
-                  globalStyles['btn'],
-                  globalStyles['btn-outline-primary']
-                )}
-                type="button"
-                onClick={this.submitSearch}
-              >
-                Search
-              </button>
+      <div className={globalStyles.row}>
+        <div className={globalStyles['col-12']}>
+          <form onSubmit={this.submitSearch}>
+            <div className={cx(globalStyles['form-group'])}>
+              <div className={globalStyles['input-group-append']}>
+                <div className={cx(globalStyles['input-group'])}>
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className={globalStyles['form-control']}
+                    onChange={this.handleInputChange}
+                  />
+                  <button
+                    className={cx(
+                      globalStyles['btn'],
+                      globalStyles['btn-outline-primary']
+                    )}
+                    type="button"
+                    onClick={this.submitSearch}
+                  >
+                    Search
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
-      </form>
+        <SearchBy />
+      </div>
     );
   }
 }
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({ searchFilter }) => ({ searchFilter });
 
 export default connect(mapStateToProps)(Searchbar);
